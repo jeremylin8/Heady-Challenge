@@ -6,6 +6,10 @@ const app = express();
 // Connect Database
 connectDB();
 
+// Define Routes
+app.use('/api/product', require('./routes/api/product'));
+app.use('/api/category', require('./routes/api/category'));
+
 app.get('/', (req, res) => res.send('API Running'));
 
 const PORT = process.env.PORT || 5000;
