@@ -1,30 +1,28 @@
 const { Schema, model, ObjectId } = require('mongoose');
 
-const ProductSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
+const ProductSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    quantity: {
+      type: Number,
+      required: true,
+    },
+    description: {
+      type: String,
+    },
+    categories: {
+      ref: 'Category',
+      type: [ObjectId],
+    },
   },
-  price: {
-    type: Number,
-    required: true,
-  },
-  quantity: {
-    type: Number,
-    required: true,
-  },
-  description: {
-    type: Number,
-    required: true,
-  },
-  categories: {
-    ref: 'Category',
-    type: ObjectId,
-  },
-  date: {
-    type: Date,
-    default: Date.now,
-  },
-});
+  { collection: 'products', timestamps: true }
+);
 
 module.exports = Product = model('product', ProductSchema);
